@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de confidentialité — TaskTract</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0d12;
+      --bg2: #111520;
+      --border: rgba(255,255,255,0.07);
+      --accent: #00d98b;
+      --accent2: #7c5af0;
+      --text: #e8eaf0;
+      --muted: #6b7280;
+      --card: #13182200;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Gradient mesh background */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(124,90,240,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* Header */
+    header {
+      padding: 60px 0 48px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #7c5af0, #2f8fff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .meta-item {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta-item span {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 48px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    section:nth-child(2) { animation-delay: 0.05s; }
+    section:nth-child(3) { animation-delay: 0.10s; }
+    section:nth-child(4) { animation-delay: 0.15s; }
+    section:nth-child(5) { animation-delay: 0.20s; }
+    section:nth-child(6) { animation-delay: 0.25s; }
+    section:nth-child(7) { animation-delay: 0.30s; }
+    section:nth-child(8) { animation-delay: 0.35s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 18px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    p {
+      color: #9ca3af;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    /* Data cards */
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .data-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .data-card:hover { border-color: rgba(0,217,139,0.3); }
+
+    .data-card-icon {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .data-card-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .data-card-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Rights list */
+    .rights-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .rights-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      color: #9ca3af;
+    }
+
+    .rights-list li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Highlight box */
+    .highlight {
+      background: linear-gradient(135deg, rgba(0,217,139,0.06), rgba(124,90,240,0.06));
+      border: 1px solid rgba(0,217,139,0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .highlight p {
+      color: #b0bec5;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .highlight strong {
+      color: var(--accent);
+    }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .contact-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7c5af0, #2f8fff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+    }
+
+    .contact-info a:hover { opacity: 0.7; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      margin-top: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .footer-badge {
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(0,217,139,0.1);
+      border: 1px solid rgba(0,217,139,0.2);
+      color: var(--accent);
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.85rem;
+    }
+
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: #9ca3af;
+      vertical-align: top;
+    }
+
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    @media (max-width: 600px) {
+      .data-grid { grid-template-columns: 1fr 1fr; }
+      .contact-card { flex-direction: column; text-align: center; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">TT</div>
+      <span class="logo-name">TaskTract</span>
+    </div>
+    <h1>Politique de<br /><em>confidentialité</em></h1>
+    <div class="meta">
+      <div class="meta-item"><span class="dot"></span> Version 1.0</div>
+      <div class="meta-item">Entrée en vigueur : <span>08 mai 2026</span></div>
+      <div class="meta-item">Dernière mise à jour : <span>08 mai 2026</span></div>
+    </div>
+  </header>
+
+  <!-- 1. Introduction -->
+  <section>
+    <h2>Introduction</h2>
+    <p>TaskTract (« l'Application ») est une application de gestion personnelle permettant de gérer vos tâches, projets et finances. Elle est éditée par <strong>TaskTract</strong>, dont le responsable peut être contacté à l'adresse <a href="mailto:tasktract.app@gmail.com" style="color:var(--accent)">tasktract.app@gmail.com</a>.</p>
+    <p>La présente politique décrit quelles données nous collectons, pourquoi, comment elles sont protégées et quels sont vos droits en vertu du Règlement Général sur la Protection des Données (RGPD — UE 2016/679).</p>
+    <div class="highlight">
+      <p><strong>En résumé :</strong> vos données personnelles restent les vôtres. Nous ne les vendons pas, ne les partageons pas avec des tiers à des fins publicitaires, et vous pouvez les supprimer à tout moment.</p>
+    </div>
+  </section>
+
+  <!-- 2. Données collectées -->
+  <section>
+    <h2>Données collectées</h2>
+    <p>Nous collectons uniquement les données nécessaires au fonctionnement de l'application :</p>
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-card-icon">📧</div>
+        <div class="data-card-title">Compte</div>
+        <p class="data-card-desc">Adresse email et mot de passe (chiffré) pour l'authentification.</p>
+      </div>
+      <div class="data-card">
+        <div class="data-card-icon">👤</div>
+        <div class="data-card-title">Profil</div>
+        <p class="data-card-desc">Nom d'affichage choisi par l'utilisateur.</p>
+      </div>
+      <div class="data-card">
+        <div class="data-card-icon">✅</div>
+        <div class="data-card-title">Tâches</div>
+        <p class="data-card-desc">Texte, priorité, dates et tags saisis par l'utilisateur.</p>
+      </div>
+      <div class="data-card">
+        <div class="data-card-icon">📁</div>
+        <div class="data-card-title">Projets</div>
+        <p class="data-card-desc">Nom, description, budget et avancement.</p>
+      </div>
+      <div class="data-card">
+        <div class="data-card-icon">💰</div>
+        <div class="data-card-title">Finances</div>
+        <p class="data-card-desc">Montants, descriptions et catégories saisis par l'utilisateur.</p>
+      </div>
+      <div class="data-card">
+        <div class="data-card-icon">⚙️</div>
+        <div class="data-card-title">Préférences</div>
+        <p class="data-card-desc">Thème, langue, devise et paramètres d'affichage.</p>
+      </div>
+    </div>
+    <p>Nous ne collectons <strong>pas</strong> : localisation GPS, contacts, photos, données biométriques, identifiants publicitaires.</p>
+  </section>
+
+  <!-- 3. Finalités -->
+  <section>
+    <h2>Finalités et base légale</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Finalité</th>
+          <th>Base légale</th>
+          <th>Durée</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Authentification et sécurité du compte</td>
+          <td>Exécution du contrat</td>
+          <td>Durée du compte + 30 jours</td>
+        </tr>
+        <tr>
+          <td>Synchronisation des données entre appareils</td>
+          <td>Exécution du contrat</td>
+          <td>Durée du compte</td>
+        </tr>
+        <tr>
+          <td>Amélioration de l'application (logs anonymes)</td>
+          <td>Intérêt légitime</td>
+          <td>90 jours glissants</td>
+        </tr>
+        <tr>
+          <td>Réponse aux demandes de support</td>
+          <td>Intérêt légitime</td>
+          <td>2 ans</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4. Hébergement -->
+  <section>
+    <h2>Hébergement et sous-traitants</h2>
+    <p>Les données sont hébergées sur <strong>Supabase</strong> (infrastructure AWS, région <em>us-east-1</em>, États-Unis), dans le cadre d'un accord de traitement conforme au RGPD (clauses contractuelles types).</p>
+    <p>Supabase applique un chiffrement des données au repos (AES-256) et en transit (TLS 1.2+). Aucun autre sous-traitant n'a accès à vos données.</p>
+    <div class="highlight">
+      <p><strong>Isolation des données :</strong> chaque compte utilisateur est isolé par une politique de sécurité au niveau des lignes (Row Level Security). L'éditeur de l'application ne peut pas accéder à vos données personnelles via l'API publique.</p>
+    </div>
+  </section>
+
+  <!-- 5. Vos droits -->
+  <section>
+    <h2>Vos droits (RGPD)</h2>
+    <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+    <ul class="rights-list">
+      <li><strong>Droit d'accès</strong> — obtenir une copie de vos données personnelles.</li>
+      <li><strong>Droit de rectification</strong> — corriger des données inexactes via les paramètres de l'app.</li>
+      <li><strong>Droit à l'effacement</strong> — supprimer votre compte et toutes vos données depuis l'app (Réglages → Données → Supprimer mon compte).</li>
+      <li><strong>Droit à la portabilité</strong> — exporter vos données au format JSON depuis l'app.</li>
+      <li><strong>Droit d'opposition</strong> — vous opposer au traitement fondé sur l'intérêt légitime.</li>
+      <li><strong>Droit à la limitation</strong> — demander la suspension du traitement dans certains cas.</li>
+    </ul>
+    <p>Pour exercer vos droits, contactez-nous à <a href="mailto:tasktract.app@gmail.com" style="color:var(--accent)">tasktract.app@gmail.com</a>. Nous répondons dans un délai de 30 jours.</p>
+    <p>Vous pouvez également introduire une réclamation auprès de la <strong>CNIL</strong> : <a href="https://www.cnil.fr" style="color:var(--accent)" target="_blank">www.cnil.fr</a>.</p>
+  </section>
+
+  <!-- 6. Sécurité -->
+  <section>
+    <h2>Sécurité</h2>
+    <p>Nous mettons en œuvre les mesures techniques suivantes pour protéger vos données :</p>
+    <ul class="rights-list">
+      <li>Chiffrement des mots de passe (bcrypt via Supabase Auth)</li>
+      <li>Transmission chiffrée HTTPS/TLS pour toutes les communications</li>
+      <li>Authentification par token JWT à durée limitée</li>
+      <li>Isolation des données par Row Level Security (RLS)</li>
+      <li>Aucun accès de l'éditeur aux données utilisateurs via l'API</li>
+    </ul>
+  </section>
+
+  <!-- 7. Mineurs -->
+  <section>
+    <h2>Mineurs</h2>
+    <p>TaskTract n'est pas destiné aux personnes de moins de 16 ans. Nous ne collectons pas sciemment de données concernant des mineurs. Si vous pensez qu'un mineur a créé un compte, contactez-nous pour suppression immédiate.</p>
+  </section>
+
+  <!-- 8. Modifications -->
+  <section>
+    <h2>Modifications de la politique</h2>
+    <p>En cas de modification substantielle, nous vous informerons par notification dans l'application au moins 15 jours avant l'entrée en vigueur. La version en vigueur est toujours accessible depuis l'application et cette page.</p>
+  </section>
+
+  <!-- 9. Contact -->
+  <section>
+    <h2>Contact</h2>
+    <p>Pour toute question relative à cette politique ou à vos données personnelles :</p>
+    <div class="contact-card">
+      <div class="contact-avatar">🔒</div>
+      <div class="contact-info">
+        <h3>Responsable de la protection des données</h3>
+        <a href="mailto:tasktract.app@gmail.com">tasktract.app@gmail.com</a>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:4px;margin-bottom:0">Réponse sous 30 jours — France</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 TaskTract — Tous droits réservés</p>
+    <span class="footer-badge">Conforme RGPD</span>
+  </footer>
+
+</div>
+</body>
+</html>
